@@ -6,8 +6,10 @@ This phase replaces the current mock-only authentication boundary with a Supabas
 
 - `src/lib/supabase/client.ts` → `src/lib/supabase/client.ts`
 - `src/app/providers/AuthContext.tsx` → `src/app/providers/AuthContext.tsx`
-- `.env.example` → merge the variables into the project environment; do not commit a real `.env` file
+- `env.example` → use it as a reference for environment variables; do not commit a real `.env` file
 - `supabase/migrations/0002_profiles_and_rls.sql` → apply in Supabase after reviewing the policies
+
+`env.example` is intentionally named without a leading dot so Figma Make can import it. You may rename it to `.env` only inside the local/runtime environment after copying the values.
 
 ## Dependency
 
