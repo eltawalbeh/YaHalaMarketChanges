@@ -5,6 +5,7 @@ import { useLang } from "@/app/providers/LangContext"
 import { leadsService, offersService } from "@/services"
 import { trackEvent } from "@/lib/analytics"
 import { formatPrice } from "@/lib/utils"
+import { isSupabaseConfigured } from "@/lib/supabase/client"
 import type { Offer } from "@/types"
 
 type Form = {
@@ -66,6 +67,10 @@ export default function Plan() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (!isSupabaseConfigured) {
+      window.alert(ar ? "قاعدة البيانات غير متصلة حاليًا. يرجى ضبط إعدادات Supabase في بيئة النشر." : "The database is not connected. Configure the Supabase environment variables before submitting.")
+      return
+    }
     setSubmitting(true)
     try {
       const lead = await leadsService.create({
