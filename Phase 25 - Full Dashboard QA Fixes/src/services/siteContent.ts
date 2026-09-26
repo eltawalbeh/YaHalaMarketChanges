@@ -7,8 +7,8 @@ export type SiteSettings = {
   office_address_ar: string; updated_by: string | null; updated_at: string
 }
 const fallback: SiteSettings = { id: "default", brand_name: "Ya Hala", brand_name_ar: "يا هلا", logo_url: null, logo_mobile_url: null, footer_text: "", footer_text_ar: "", contact_email: "", whatsapp_number: "", office_address: "", office_address_ar: "", updated_by: null, updated_at: new Date(0).toISOString() }
-function deadline<T>(promise: Promise<T>, message: string) {
-  return Promise.race([promise, new Promise<T>((_, reject) => setTimeout(() => reject(new Error(message)), 10000))])
+function deadline<T>(promise: PromiseLike<T>, message: string) {
+  return Promise.race([Promise.resolve(promise), new Promise<T>((_, reject) => setTimeout(() => reject(new Error(message)), 10000))])
 }
 export const siteContentService = {
   async get(): Promise<SiteSettings> {
