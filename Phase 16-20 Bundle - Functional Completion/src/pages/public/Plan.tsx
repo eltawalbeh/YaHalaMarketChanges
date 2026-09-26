@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { PublicLayout } from "@/components/public/PublicLayout"
 import { useLang } from "@/app/providers/LangContext"
 import { leadsService } from "@/services"
+import { trackEvent } from "@/lib/analytics"
 
 type Form = {
   name: string
@@ -26,6 +27,11 @@ export default function Plan() {
   })
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+
+  useEffect(() => {
+    document.title = ar ? "خطط رحلتك | يا هلا" : "Plan a trip | Ya Hala"
+    trackEvent("plan_view", { language: lang })
+  }, [ar, lang])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -56,8 +62,10 @@ export default function Plan() {
 
       setSubmitting(false)
       setSubmitted(true)
+      trackEvent("plan_submit", { reference, language: lang })
       if (WHATSAPP_NUMBER) {
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer")
+        trackEvent("whatsapp_click", { reference, language: lang })
       }
     } catch {
       setSubmitting(false)
