@@ -28,9 +28,9 @@ Run build, route checks, RTL/LTR checks, mobile form checks, accessibility check
 ## Files
 
 - `src/pages/public/Plan.tsx`: functional handler layered onto the Figma Make UI.
+- `src/lib/analytics.ts`: event bridge for page, submit, and WhatsApp tracking.
 - `supabase/migrations/0004_phase_16_20_indexes_and_security.sql`: non-destructive indexes and policy hardening.
 
 ## Required environment value
 
 `VITE_WHATSAPP_NUMBER` must contain the official international WhatsApp number without spaces or symbols. Replace the current placeholder contact text in the UI with approved business details in a separate content pass.
-
