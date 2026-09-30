@@ -1,7 +1,39 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Button } from "./Button";
 import { useLang } from "@/app/providers/LangContext";
-iconst iconGlyphs: Record<string, typeof HouseIcon> = {
+import {
+  ArrowUpRightIcon,
+  BuildingsIcon,
+  BrowserIcon,
+  CalendarCheckIcon,
+  CalendarDotsIcon,
+  ChartLineUpIcon,
+  ChatCenteredTextIcon,
+  CheckCircleIcon,
+  ClockCountdownIcon,
+  ClockIcon,
+  CurrencyCircleDollarIcon,
+  CurrencyDollarIcon,
+  DownloadSimpleIcon,
+  EyeIcon,
+  FileTextIcon,
+  HandshakeIcon,
+  HouseIcon,
+  MagnifyingGlassIcon,
+  MapPinAreaIcon,
+  PaperPlaneTiltIcon,
+  QuestionIcon,
+  SignOutIcon,
+  StarIcon,
+  SuitcaseRollingIcon,
+  TimerIcon,
+  TrendUpIcon,
+  UserGearIcon,
+  UserPlusIcon,
+  UsersIcon,
+  UsersThreeIcon,
+} from "@phosphor-icons/react";
+const iconGlyphs: Record<string, typeof HouseIcon> = {
   "59933": ArrowUpRightIcon,
   "61322": HandshakeIcon,
   "68562": BuildingsIcon,
