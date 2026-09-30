@@ -21,7 +21,7 @@ export default function Plan() {
   const [params] = useSearchParams();
   const slug = params.get("offer");
   const r = useResource(
-    () => (slug ? offersService.getBySlug(slug) : Promise.resolve(null)),
+    () => (slug ? offersService.getBySelector(slug) : Promise.resolve(null)),
     [slug],
   );
   const [form, setForm] = useState({

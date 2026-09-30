@@ -13,14 +13,26 @@ export const offersService = {
     });
   },
   async getBySlug(slug: string): Promise<Offer | null> {
+    return request(publishedOfferQuery().eq("slug", slug).maybeSingle());
+  },
+  async getBySelector(selector: string): Promise<Offer | null> {
+    const raw = decodeURIComponent(selector).replace(/\+/g, " ").trim();
+    const slug = raw
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}]+/gu, "-")
+      .replace(/^-+|-+$/g, "");
+    const bySlug = await this.getBySlug(raw);
+    if (bySlug) return bySlug;
+    if (slug && slug !== raw) {
+      const normalized = await this.getBySlug(slug);
+      if (normalized) return normalized;
+    }
+    const byTitle = await request(
+      publishedOfferQuery().ilike("title", raw).maybeSingle(),
+    );
+    if (byTitle) return byTitle;
     return request(
-      db()
-        .from("offers")
-        .select("*")
-        .eq("slug", slug)
-        .eq("status", "published")
-        .or("expires_at.is.null,expires_at.gt." + new Date().toISOString())
-        .maybeSingle(),
+      publishedOfferQuery().ilike("title_ar", raw).maybeSingle(),
     );
   },
   async getById(id: string): Promise<Offer | null> {
@@ -37,3 +49,11 @@ export const offersService = {
     );
   },
 };
+
+function publishedOfferQuery() {
+  return db()
+    .from("offers")
+    .select("*")
+    .eq("status", "published")
+    .or("expires_at.is.null,expires_at.gt." + new Date().toISOString());
+}
