@@ -48,7 +48,7 @@ export default function Login() {
     }
   }
   return (
-    <div className="login-screen">
+    <div className="login-screen" dir={ar ? "rtl" : "ltr"}>
       <section className="login-visual">
         <img src={assets.loginCover} alt="" />
         <div className="login-story">
@@ -82,7 +82,7 @@ export default function Login() {
         <div className="flex justify-between items-center">
           <Link to="/">
             <img
-              src="/assets/yahala-logo-light.png"
+              src={site.logo_url || "/assets/yahala-logo-dark.png"}
               alt={ar ? site.brand_name_ar : site.brand_name}
               className="h-9 w-auto object-contain"
             />
