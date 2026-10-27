@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { ArrowUpRightIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon, ListIcon } from "@phosphor-icons/react";
 import { useLang } from "@/app/providers/LangContext";
 import { useSite } from "@/app/providers/SiteContext";
 import { LanguageToggle } from "@/components/shared/LanguageToggle";
@@ -23,6 +23,15 @@ export function PublicNav() {
           <NavLink to="/plan" className={({ isActive }) => isActive ? "active" : ""}>{ar ? "صمّم رحلتك" : "Plan your trip"}</NavLink>
         </nav>
         <div className="public-nav-actions">
+          <details className="public-mobile-menu">
+            <summary aria-label={ar ? "فتح القائمة" : "Open navigation"}><ListIcon size={22} /></summary>
+            <nav aria-label={ar ? "قائمة الهاتف" : "Mobile navigation"}>
+              <Link to="/">{ar ? "الرئيسية" : "Discover"}</Link>
+              <Link to="/offers">{ar ? "الوجهات والعروض" : "Destinations & offers"}</Link>
+              <Link to="/plan">{ar ? "صمّم رحلتك" : "Plan your trip"}</Link>
+              <Link to="/legal">{ar ? "الخصوصية والشروط" : "Privacy & terms"}</Link>
+            </nav>
+          </details>
           <LanguageToggle className="market-language-toggle" />
           <Link to="/plan" className="public-nav-cta">{ar ? "ابدأ رحلتك" : "Start planning"} <ArrowUpRightIcon size={15} /></Link>
         </div>
