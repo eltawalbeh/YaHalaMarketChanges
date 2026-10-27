@@ -1,0 +1,22 @@
+:root {
+  --background: #ffffff;
+  --foreground: #182126;
+  --card: #fff;
+  --card-foreground: #182126;
+  --primary: #087e99;
+  --primary-foreground: #fff;
+  --secondary: #e9f5f6;
+  --secondary-foreground: #075b6c;
+  --muted: #f6f8f8;
+  --muted-foreground: #69777e;
+  --accent: #087e99;
+  --accent-foreground: #fff;
+  --border: #e5e9e9;
+  --ring: #087e99;
+  --radius: 8px;
+  --font-sans: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-arabic: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-display: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --sidebar-width: 236px;
+}
