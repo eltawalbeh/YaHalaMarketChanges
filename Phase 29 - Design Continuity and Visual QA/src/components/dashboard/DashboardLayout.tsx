@@ -71,7 +71,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
       <div className="dashboard-body">
         <header className="dashboard-topbar">
           <div className="global-search">
-            <Icon file="a49e4" className="absolute left-3 top-3" />
+            <Icon file="a49e4" className="absolute start-3 top-3" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
