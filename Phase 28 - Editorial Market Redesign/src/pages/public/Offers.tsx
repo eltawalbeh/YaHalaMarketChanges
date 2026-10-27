@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { PublicLayout } from "@/components/public/PublicLayout";
 import { useLang } from "@/app/providers/LangContext";
-import { useSite } from "@/app/providers/SiteContext";
 import { useResource } from "@/lib/request";
 import { offersService } from "@/services";
 import { Button } from "@/components/ui/Button";
@@ -11,7 +10,6 @@ import { assets } from "@/lib/assets";
 export default function Offers() {
   const { lang } = useLang();
   const ar = lang === "ar";
-  const { site } = useSite();
   const [params, setParams] = useSearchParams();
   const r = useResource(() => offersService.list({ status: "published" }));
   const offers = r.data || [];
@@ -65,10 +63,10 @@ export default function Offers() {
           {ar ? "استكشاف الرحلات" : "Explore trips"}
         </div>
         <h1 className="text-3xl sm:text-[42px] font-bold leading-relaxed">
-          {site.content[ar ? "hero_title_ar" : "hero_title"]}
+          {ar ? "اكتشف رحلتك القادمة." : "Discover your next journey."}
         </h1>
         <p className="text-sm text-[var(--muted-foreground)] mt-3 mb-5">
-          {site.content[ar ? "hero_text_ar" : "hero_text"]}
+          {ar ? "استكشف عروض السفر المتاحة، واختر الوجهة والموعد الأنسب لك." : "Explore published travel offers, destinations and departure dates."}
         </p>
         <form
           onSubmit={(e) => {
