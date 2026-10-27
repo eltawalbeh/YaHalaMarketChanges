@@ -32,6 +32,12 @@ body { color: var(--foreground); }
 .public-nav-actions { gap: 14px; }
 .public-nav-actions .market-language-toggle { background: transparent !important; color: #273e45 !important; padding: 9px 10px !important; border: 1px solid #e0e9e9; font-size: 12px !important; border-radius: 6px; }
 .public-nav-actions .market-language-toggle:hover { background: #f4f9f9 !important; }
+.public-mobile-menu { display: none; position: relative; }
+.public-mobile-menu summary { list-style: none; display: flex; align-items: center; cursor: pointer; padding: 7px; color: #1f3d45; }
+.public-mobile-menu summary::-webkit-details-marker { display: none; }
+.public-mobile-menu nav { position: absolute; z-index: 60; inset-inline-end: 0; top: calc(100% + 17px); min-width: 225px; display: grid; padding: 10px; background: #fff; border: 1px solid #dfe8e8; box-shadow: 0 20px 35px #142c3420; }
+.public-mobile-menu nav a { padding: 12px 10px; white-space: nowrap; font-size: 13px; color: #263f45; }
+.public-mobile-menu nav a:hover { background: #eff7f7; }
 .public-nav-cta { display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; color: white; background: var(--primary); font-size: 12px; font-weight: 600; border-radius: 5px; white-space: nowrap; transition: background .2s; }
 .public-nav-cta:hover { background: #08677c; }
 .market-home { width: 100%; }
@@ -103,6 +109,11 @@ body { color: var(--foreground); }
 .public-footer-grid > div > a:not(.public-footer-wordmark) { display: flex; align-items: center; gap: 6px; margin-bottom: 13px; width: fit-content; color: #e2e9e9; line-height: 1.5; }
 .public-footer-grid a:hover { color: #80d5e2 !important; }
 .public-footer-bottom { margin-top: 74px; padding-top: 18px; border-top: 1px solid #ffffff25; display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 11px; color: #9bafb4; }
+.public-shell .market-listing-intro { padding-top: 70px; padding-bottom: 36px; }
+.public-shell .market-listing-intro h1 { font-size: clamp(35px,5vw,64px); font-weight: 650; line-height: 1.15; letter-spacing: -.06em; }
+.public-shell .market-listing-search { border-radius: 4px; box-shadow: none; padding: 12px !important; gap: 12px; }
+.public-shell .market-listing-search input, .public-shell .market-listing-search select { background: white; border-radius: 4px; }
+.public-shell .market-listing-grid { padding-bottom: 85px; gap: 24px; }
 .public-shell .offer-card { border-radius: 3px; box-shadow: none; border-color: #e4ebeb; }
 .public-shell .offer-card img { height: 240px; }
 .public-shell .offer-card .details { padding: 19px; }
@@ -164,6 +175,7 @@ body { color: var(--foreground); }
   .public-nav-brand { min-width: 0; }
   .public-nav-brand img { max-width: 104px; max-height: 39px; }
   .public-nav-links { display: none; }
+  .public-mobile-menu { display: block; }
   .public-nav-actions { gap: 7px; }
   .public-nav-actions .market-language-toggle { padding: 8px !important; }
   .public-nav-cta { font-size: 11px; padding: 10px 9px; }
@@ -203,6 +215,7 @@ body { color: var(--foreground); }
   .market-photo-wrap { min-height: 0; }
   .market-featured-card .market-photo-wrap { aspect-ratio: 3 / 4; }
   .market-featured-bottom { flex-wrap: wrap; }
+  .public-nav-cta { display: none; }
   .public-footer-bottom { align-items: flex-start; flex-direction: column; }
 }
 @media print {
